@@ -1,3 +1,23 @@
+/* dubPendMuJoCo.cc
+* Created by Kevin Green on Dec 7, 2017
+* Copyright 2017 - Under creative commons license 3.0:
+*        Attribution-ShareAlike CC BY-SA
+*
+* This software is furnished "as is", without technical support, and with no 
+* warranty, express or implied, as to its usefulness for any purpose.
+*
+* This is a C++ wrapper with a C interface for a simple MuJoCo double pendulum model.
+* This is intended to be the main forward dynamics simulator, while RBDL is intended
+* to be a part of the controller. This seperation is to allow the simulator to be
+* replaced with a physical system with minimal interface changes.
+* This wrapper is designed to be compiled into a library and loaded into matlab 
+* through a dedicated matlab class. It uses the state_t_muj, dyn_info_t_muj,
+*  pos_limits_t, motor_limits_t and dubpend_t structure to return data.
+* It requires MuJoCo. 
+*
+* @author Kevin Green - greenkev@oregonstate.edu
+*/
+
 #include <stdio.h>
 #include <stdbool.h>
 #include "mujoco.h"

@@ -1,4 +1,21 @@
-
+/* dubPendRBDL.cc
+* Created by Kevin Green on Dec 7, 2017
+* Copyright 2017 - Under creative commons license 3.0:
+*        Attribution-ShareAlike CC BY-SA
+*
+* This software is furnished "as is", without technical support, and with no 
+* warranty, express or implied, as to its usefulness for any purpose.
+*
+* This is a C++ wrapper with a C interface for a simple RBDL double pendulum model.
+* This is intended to be used as a part of a controller, while MuJoCo is intended
+* to be the simulation enviroment. This seperation is to allow the simulator to be
+* replaced with a physical system with minimal interface changes.
+* It is designed to be compiled into a library and loaded into matlab 
+* through a matlab class. It uses the state_t structure and the dynamic_info_t
+* structure to return data. It requires RBDL and Eigen3. 
+*
+* @author Kevin Green - greenkev@oregonstate.edu
+*/
 #include <rbdl/rbdl.h>
 #include "dubPendRBDL.h"
 
@@ -26,9 +43,10 @@ void init(){
 	Body body_a, body_b;
 	Joint joint_a, joint_b;
 
+	//See RBDL documentation for more info on the model generation syntax
 	endEffBodyID = 0;
 
-	body_a = Body (1., Vector3d (0.5, 0., 0.0), Vector3d (0.1,0.1,0.1)); //0.288675 for uniform beam
+	body_a = Body (1., Vector3d (0.5, 0., 0.0), Vector3d (0.1,0.1,0.1));
 	joint_a = Joint(JointTypeRevolute, Vector3d (0., 0., 1.));
 
 	body_a_id = m->AddBody(0, Xtrans(Vector3d(0., 0., 0.)), joint_a, body_a);

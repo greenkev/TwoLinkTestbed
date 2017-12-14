@@ -1,3 +1,22 @@
+/* dubPendMuJoCo.cc
+* Created by Kevin Green on Dec 7, 2017
+* Copyright 2017 - Under creative commons license 3.0:
+*        Attribution-ShareAlike CC BY-SA
+*
+* This software is furnished "as is", without technical support, and with no 
+* warranty, express or implied, as to its usefulness for any purpose.
+*
+* This is a C++ wrapper with a C interface for a simple MuJoCo double pendulum model.
+* This is intended to be the main forward dynamics simulator, while RBDL is intended
+* to be a part of the controller. This seperation is to allow the simulator to be
+* replaced with a physical system with minimal interface changes.
+* This wrapper is designed to be compiled into a library and loaded into matlab 
+* through a dedicated matlab class. It uses the state_t_muj, dyn_info_t_muj,
+*  pos_limits_t, motor_limits_t and dubpend_t structure to return data.
+* It requires RBDL and Eigen3. 
+*
+* @author Kevin Green - greenkev@oregonstate.edu
+*/
 #ifndef dubpendmujoco_h__
 #define dubpendmujoco_h__
  
@@ -41,7 +60,6 @@ typedef struct motor_limits_t {
 } motor_limits_t;
 
 typedef struct dubpend_t dubpend_t;
-// typedef struct dubpend_vis_t dubpend_vis_t;
 
 void init(const char *basedir);
 void set_state(double* q, double* qd);
@@ -51,15 +69,6 @@ void step(double* u);
 //void get_joint_limits(pos_limits_t *lim);
 //void get_motor_limits(motor_limits_t *lim);
 void get_state(state_t_muj* s);
-
-
-/*cassie_vis_t *vis_init(bool bSaveVid);
-bool vis_draw(cassie_vis_t *v, bool bWaitUser);
-void vis_close(cassie_vis_t *v);
-void Keyboard(int key, int scancode, int act, int mods, cassie_vis_t* v);
-void Scroll(double xoffset, double yoffset, cassie_vis_t* v);
-void MouseMove(double xpos, double ypos, cassie_vis_t* v);
-void MouseButton(int button, int act, int mods, cassie_vis_t* v);*/
 
 
 #endif  // dubpendmujoco_h__
