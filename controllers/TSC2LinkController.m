@@ -7,16 +7,11 @@ B = eye(2);
 
 set_state(m, q, qd);
 state = get_state(m);
-[H,h,h2,Jc,Jc_dot] = get_dynamic_info(m);
+[H,h,Jc,Jc_dot] = get_dynamic_info(m);
 
 %Column Vec
 pos = state.xpos';
 vel = state.xvel';
-
-%Check for diff between two methods 
-if sum(h-h2) > 0.000001
-   keyboard 
-end
 
 xdd_toe = desToeAcc + kp*(desToePos - pos) + kv*(desToeVel - velSelect*vel);
 

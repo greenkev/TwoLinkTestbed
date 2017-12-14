@@ -21,7 +21,7 @@ methods
     
     %Construct the object with the current directory as the location of
     %required files
-    function obj = dubPend()
+    function obj = DUBPENDRBDL()
 
         if ispc()
             obj.libName = 'dubPendRBDL';
@@ -40,7 +40,7 @@ methods
         confirmFileExists('src/dubPendRBDL.h');
         confirmFileExists(obj.libName);
                       
-        loadlibrary(obj.libName,'src/dubPendRBDL.h');
+        loadlibrary([obj.libName,'.dll'],'src/dubPendRBDL.h');
 
         calllib(obj.libName,'init');
 
@@ -94,8 +94,7 @@ methods
     function dyn_info = blank_dyn_info(obj)
     %Get a blank structure with the correct members and sizes            
         dyn_info.H = zeros(1, obj.nQ*obj.nQ);
-        dyn_info.h1 = zeros(1, obj.nQ);
-        dyn_info.h2 = zeros(1, obj.nQ);
+        dyn_info.h = zeros(1, obj.nQ);
         dyn_info.Jc = zeros(1, obj.nQ*obj.DOF*2); %Contact jacobians
         dyn_info.JcDot = zeros(1, obj.nQ*obj.nC*obj.DOF*2); %Contact jacobians
 

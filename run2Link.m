@@ -1,6 +1,6 @@
 %% Top Level Script to run simulation and compare two controllers
 addpath('./controllers')
-N = 2000;
+N = 10000;
 t = (1:N)./2000;
 DT = 1/2000;
 
@@ -21,12 +21,12 @@ targ_toe_ddx = zeros(size(targ_toe_x)) - omega^2*[1;0;0]*Rx*cos(omega*t) - omega
  
 %Simulate two runs, one with a Task Space Controller, one with a Jacobian
 %Transpose controller
-tsc = singleRun2Link( @TSC2LinkController, targ_toe_x,targ_toe_dx,targ_toe_ddx,N,t,kp,kv);
-jt = singleRun2Link( @JT2LinkController, targ_toe_x,targ_toe_dx,targ_toe_ddx,N,t,kp,kv);
+tsc = singleRun2Link( @TSC2LinkController, targ_toe_x,targ_toe_dx,targ_toe_ddx,t,kp,kv);
+jt = singleRun2Link( @JT2LinkController, targ_toe_x,targ_toe_dx,targ_toe_ddx,t,kp,kv);
 
 %Animate (with video export option) the results of the two simulations
 titleStr = 'TSC(red) vs J''(blue)';
-animate2Link( t,jt.q,tsc.q,targ_toe_x,titleStr,'NormalExample',0,3,kp,kv)
+animate2Link( t,jt.q,tsc.q,targ_toe_x,titleStr,'NormalExample',0,10,kp,kv)
 %% Plots of data
 figure(5)
 subplot(2,1,1)

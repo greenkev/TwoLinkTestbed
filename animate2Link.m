@@ -5,7 +5,7 @@ L1 = 1;
 L2 = 1;
 fig = figure(153);
 clf(fig);
-fig.Position = [-1076 140 880 792];
+fig.Position = [2   41  766  740];
 
 
 hold off

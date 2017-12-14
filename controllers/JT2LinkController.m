@@ -7,7 +7,7 @@ velSelect = [zeros(3),eye(3)];
 
 set_state(m, q, qd);
 state = get_state(m);
-[~,~,~,Jc,~] = get_dynamic_info(m);
+[~,~,Jc,~] = get_dynamic_info(m);
 
 %Column Vec
 pos = state.xpos';

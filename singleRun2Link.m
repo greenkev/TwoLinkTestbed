@@ -5,7 +5,7 @@ function [ returnData ] = singleRun2Link( controller, targ_toe_x,targ_toe_dx,tar
 %size as t.
 
 %Load and initialize the MuJoCo and RBDL libraries
-m = dubPend();
+m = DUBPENDRBDL();
 muj = DUBPENDMUJOCO();
 
 DT = t(2)-t(1);
@@ -19,7 +19,7 @@ jointTorq = zeros(2,N);
 toePos = zeros(3,N);
 
 %Position Initialization
-q(:,1) = [0;0];
+q(:,1) = [0;0.2];
 qd(:,1) = [0;0];
 muj.set_state(q(:,1),qd(:,1));
  
