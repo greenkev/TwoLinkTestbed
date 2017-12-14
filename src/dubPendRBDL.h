@@ -1,5 +1,5 @@
-#ifndef dubPend_h__
-#define dubPend_h__
+#ifndef dubPendRBDL_h__
+#define dubPendRBDL_h__
 
 #include <stdbool.h>
 
@@ -25,8 +25,7 @@ typedef struct state_t {
 
 typedef struct dyn_info_t {
 	double H[nQ*nQ];
-	double h1[nQ];
-	double h2[nQ];
+	double h[nQ];
 	double Jc[nQ*DOF*2];
 	double JcDot[nQ*DOF*2];
 } dyn_info_t;
@@ -36,10 +35,9 @@ void init();
 void get_dynamic_info(dyn_info_t* info);
 void set_state(double* q, double* qd);
 void get_state(state_t* s);
-//void step(double* u);
 
 #ifdef __cplusplus
 }
-#endif
+#endif //__cplusplus
 
-#endif
+#endif //dubPendRBDL_h__

@@ -5,4 +5,4 @@ lib2:
 	gcc obj/dubPendMujoco.o -o dubPendMujoco.dll -shared -L"C:/mjpro150/bin" -lmujoco150 -lglfw3
 
 rbdl: 	
-	g++ src/dubPend.cc -I"C:/RBDL/include" "C:/RBDL/lib/librbdl.a" -Isrc -shared -o dubPend.dll
+	g++ src/dubPendRBDL.cc -I"C:/RBDL/include" "C:/RBDL/lib/librbdl.a" -Isrc -shared -I"C:/mingw64/include" -o dubPendRBDL.dll

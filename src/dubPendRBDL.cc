@@ -1,6 +1,6 @@
 
 #include <rbdl/rbdl.h>
-#include "dubPend.h"
+#include "dubPendRBDL.h"
 
 #define DT 0.0005
 
@@ -66,13 +66,10 @@ void get_dynamic_info(dyn_info_t* info){
 
 	// Generalized Joint Forces (grav, coriolis, ect.)
 	// Calculated two ways for comparison
-	VectorNd h1 = VectorNd::Zero (m->dof_count);	
-	VectorNd h2 = VectorNd::Zero (m->dof_count);
-	NonlinearEffects(*m, Q, QDot, h1);
-	InverseDynamics(*m, Q, QDot, QDDot, h2);
+	VectorNd h = VectorNd::Zero (m->dof_count);	
+	NonlinearEffects(*m, Q, QDot, h);
 	for(int i = 0; i < nQ; ++i){
-		info->h1[i] = h1[i];
-		info->h2[i] = h2[i];
+		info->h[i] = h[i];
 	}
 
 	//End Eff Jacobian

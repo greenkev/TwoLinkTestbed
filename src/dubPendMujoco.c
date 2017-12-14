@@ -78,6 +78,7 @@ void init(const char *basedir)
 		free(keyfile);
 		free(xmlfile);
     }
+    
 	m_bMJActivated = true;
 
     d = mj_makeData(m);

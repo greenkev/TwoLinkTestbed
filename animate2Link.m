@@ -1,6 +1,6 @@
 function animate2Link( t,qJT,qTSC,targ_toe_x,titleStr,videoName,exportEnabled,frameSkip,kp,kv)
-%UNTITLED2 Summary of this function goes here
-%   Detailed explanation goes here
+%ANIMATE2LINK Hackish animation for comparison of 2x two link pendulums.
+%Nothing fancy, special or particularly robust. Is reasonably quick
 L1 = 1;
 L2 = 1;
 fig = figure(153);
@@ -21,7 +21,8 @@ grid on
 axis equal
 
 
-    
+%Really Really Really slow when using legend
+
 % legend('test','test','test')
 
 % legend data;
@@ -58,9 +59,6 @@ end
 if exportEnabled ~= 0 
     v.close()
 end
-
-
-
 
 end
 
